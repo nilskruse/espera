@@ -1,5 +1,6 @@
 #include "PackageQueue.hpp"
 
+#include <cassert>
 #include <chrono>
 #include <mutex>
 
@@ -7,6 +8,7 @@
 
 PackageQueue::PackageQueue(int packageDelaySeconds) : m_packageDelaySeconds(packageDelaySeconds)
 {
+    assert(m_packageDelaySeconds >= 0);
 }
 
 void PackageQueue::push(const Package &&package)
